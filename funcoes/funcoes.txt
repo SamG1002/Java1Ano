@@ -1,0 +1,112 @@
+import java.util.*;
+class Metodos {
+	public static String command;
+	public static Scanner in = new Scanner(System.in);
+	public static void main(String[] args) {
+		
+		System.out.printf("%-43s%n", "Digite 0 para executar o método do fatorial");
+		System.out.printf("%-43s%n", "Digite 1 para executar o método da tabuada");
+		System.out.printf("%-43s%n", "Digite 2 para executar o método da aposentaria");
+		System.out.printf("%-43s%n", "Digite 3 para executar o método da potência");
+		command=in.nextLine();
+		if(command.equals("0")) {
+			zero();	
+		}
+		else if(command.equals("1")) {
+			tabuada();
+		}
+		else if(command.equals("2")) {
+			dois();
+		}
+		else if(command.equals("3")) {
+			potenciacao();
+		}
+	}
+	public static void zero () {
+		int f;
+		System.out.println("Digite o número a ser fatorado");
+		f= in.nextInt();
+		System.out.println(fatorial(f));
+	}
+	
+	//samuel
+	
+	public static void tabuada () {
+	int n;
+	System.out.println("Digite o Valor que queira saber a tabuada");
+	n = in.nextInt();
+	for(int i=0;i<11;i++) {
+		System.out.println(n+" X "+i+" = "+(n*i) );
+	}
+	}
+	
+	
+	public static void dois () {
+		String sexo;
+		char Sexo='a';
+		int id;
+		System.out.println("Digite o sexo da pessoa");
+		sexo= in.next();
+		System.out.println("Digite a idade");
+		id = in.nextInt();
+		if (sexo.equalsIgnoreCase("masculino") || sexo.equalsIgnoreCase("m")) Sexo='m';
+		else if (sexo.equalsIgnoreCase("feminino") || sexo.equalsIgnoreCase("f")) Sexo='f';
+		aposentado (Sexo, id);
+	}
+	
+	
+	public static long fatorial (int base) {
+		long fatorial=1;
+		if (base<0) {
+			System.out.println("Não é possível fatorar um número negativo");
+		} else {
+			while (base>1) {
+				fatorial= fatorial*base;
+				base--;
+			}
+		}
+		return fatorial;
+	}
+	
+	
+	public static void aposentado (char sexo, int idade) {
+		if (sexo =='m') {
+			int dif=60-idade;
+			if (dif>=0) {
+				System.out.println("Ainda faltam "+dif+" anos para se aposentar");
+			}
+			else {
+				System.out.println("Já pode coçar o saco na rede de boa e pegar o lugar no ônibus do Samuel");
+			}
+		}
+		else if (sexo=='f') {
+			int dif = 55-idade;
+			if (dif>=0) {
+				System.out.println("Ainda faltam "+dif+" anos para se aposentar");
+			}
+			else {
+				System.out.println("Já pode coçar fofocar a vida das filhas de boa que ninguém vai julgar");
+			}
+		}
+		else {
+			System.out.println("Digita o sexo certo vadia puta");
+		}
+	}
+	
+	//samuel
+	
+	public static void potenciacao () {
+		int potencia = 0,base ,expoente,d;
+		System.out.println("Digite o valor da base");
+		base= in.nextInt();
+		System.out.println("Digite o valor do expoente");
+		expoente= in.nextInt();
+		d= base;
+		while (expoente>1) {
+			potencia= base*d;
+			d= potencia;
+			expoente--;
+		}
+		System.out.println("A potencia eh "+potencia);
+	}
+	}
